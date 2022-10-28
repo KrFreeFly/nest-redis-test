@@ -26,6 +26,7 @@ export class AuthService {
       accessToken: this.jwtService.sign(payload, {
         secret: process.env.JWT_SECRET,
       }),
+      user,
     };
   }
 }

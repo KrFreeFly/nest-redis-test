@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   UseGuards,
-  Request,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -24,6 +23,7 @@ export class UsersController {
   @Roles(RolesEnum.Admin)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
+    console.log(createUserDto);
     if (!createUserDto.login) {
       createUserDto.login = `${createUserDto.firstName}${
         createUserDto.lastName
