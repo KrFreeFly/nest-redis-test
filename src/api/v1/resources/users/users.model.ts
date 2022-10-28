@@ -44,7 +44,6 @@ export default class Users extends Model {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
     field: 'password_hash',
   })
   passwordHash: string;
