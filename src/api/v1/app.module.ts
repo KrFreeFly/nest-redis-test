@@ -9,6 +9,8 @@ import { AuthService } from './resources/auth/auth.service';
 import { UsersService } from './resources/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ClassesModule } from './resources/classes/classes.module';
+import { PassTypesModule } from './resources/pass-types/pass-types.module';
+import { PassesModule } from './resources/passes/passes.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { ClassesModule } from './resources/classes/classes.module';
     UsersModule,
     AuthModule,
     ClassesModule,
+    PassTypesModule,
+    PassesModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, UsersService, JwtService],

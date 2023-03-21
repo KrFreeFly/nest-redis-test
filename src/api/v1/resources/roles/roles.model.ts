@@ -1,6 +1,6 @@
 import { Column, Model, Table, DataType, HasMany } from 'sequelize-typescript';
 import Users from '../users/users.model';
-import { User } from '../users/dto/user.entity';
+import { User } from '../users/dto/user.dto';
 
 @Table({
   timestamps: false,

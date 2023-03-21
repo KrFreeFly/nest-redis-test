@@ -1,64 +1,37 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('pass_types', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        unique: true,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        unique: true,
-      },
-      login: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        unique: true,
-      },
-      passwordHash: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        field: 'password_hash',
-      },
-      vk: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      insta: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      firstName: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: 'first_name',
       },
-      lastName: {
+      info: {
         type: Sequelize.STRING,
-        allowNull: false,
-        field: 'last_name',
-      },
-      birthDate: {
-        type: Sequelize.DATEONLY,
         allowNull: true,
       },
-      roleId: {
+      amount: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 1,
-        field: 'role_id',
-        references: {
-          model: 'roles',
-          key: 'id',
-        },
+      },
+      duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      durationType: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: 'duration_type',
+      },
+      cost: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -76,6 +49,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('pass_types');
   },
 };

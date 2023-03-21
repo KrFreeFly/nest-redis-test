@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import Users from './users.model';
 import Roles from '../roles/roles.model';
-import { User } from './dto/user.entity';
+import { User } from './dto/user.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { USER_NOT_FOUND } from '../../helpers/errors';
 
