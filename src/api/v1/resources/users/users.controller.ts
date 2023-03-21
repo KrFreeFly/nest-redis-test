@@ -23,7 +23,6 @@ export class UsersController {
   @Roles(RolesEnum.Admin)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log(createUserDto);
     if (!createUserDto.login) {
       createUserDto.login = `${createUserDto.firstName}${
         createUserDto.lastName
