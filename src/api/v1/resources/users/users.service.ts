@@ -43,8 +43,14 @@ export class UsersService {
     };
   }
 
-  findOneById(id: number) {
-    return `This action returns a #${id} user`;
+  async findOneById(id: number) {
+    const user = await this.userModel.findByPk(id, {
+      attributes: {
+        exclude: ['passwordHash'],
+      },
+    });
+    if (!user) throw new HttpException(USER_NOT_FOUND, 404);
+    return user;
   }
 
   async findOneByLogin(login: string): Promise<User> {
