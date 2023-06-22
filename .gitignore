@@ -39,3 +39,6 @@ lerna-debug.log*
 
 # HTACCESS
 .htaccess
+
+# DB
+/src/api/v1/db/sqlite.db

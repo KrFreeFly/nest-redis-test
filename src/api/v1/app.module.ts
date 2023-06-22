@@ -11,6 +11,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ClassesModule } from './resources/classes/classes.module';
 import { PassTypesModule } from './resources/pass-types/pass-types.module';
 import { PassesModule } from './resources/passes/passes.module';
+import { UsersController } from './resources/users/users.controller';
 
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import { PassesModule } from './resources/passes/passes.module';
     PassTypesModule,
     PassesModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, UsersController],
   providers: [AppService, AuthService, UsersService, JwtService],
 })
 export class AppModule {}

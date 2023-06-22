@@ -11,7 +11,7 @@ import { PassesService } from './passes.service';
 import { CreatePassDto } from './dto/create-pass.dto';
 import { UpdatePassDto } from './dto/update-pass.dto';
 
-@Controller('passes')
+@Controller('api/v1/passes')
 export class PassesController {
   constructor(private readonly passesService: PassesService) {}
 
