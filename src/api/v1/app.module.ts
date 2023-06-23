@@ -16,8 +16,7 @@ import { UsersController } from './resources/users/users.controller';
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'sqlite',
-      storage: './src/db/sqlite.db',
+      dialect: 'postgres',
       autoLoadModels: true,
       synchronize: true,
     }),
