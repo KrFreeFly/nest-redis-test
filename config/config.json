@@ -1,21 +1,10 @@
 {
-  "test": {
-    "dialect": "sqlite",
-    "storage": "./src/db/sqlite.db",
-    "migrationStorageTableName": "sequelize_migrations",
-    "seederStorage": "sequelize",
-    "seederStorageTableName": "sequelize_seeders"
-  },
-  "production": {
-    "dialect": "sqlite",
-    "storage": "./src/db/sqlite.db",
-    "migrationStorageTableName": "sequelize_migrations",
-    "seederStorage": "sequelize",
-    "seederStorageTableName": "sequelize_seeders"
-  },
   "development": {
-    "dialect": "sqlite",
-    "storage": "./src/db/sqlite.db",
+    "dialect": "postgres",
+    "host": "127.0.0.1",
+    "username": "postgres",
+    "password": "4815162342",
+    "database": "salsafamilia",
     "migrationStorageTableName": "sequelize_migrations",
     "seederStorage": "sequelize",
     "seederStorageTableName": "sequelize_seeders"

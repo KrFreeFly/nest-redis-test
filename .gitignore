@@ -34,11 +34,9 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# ENV
+# ENV & configs
 .env
+/config
 
 # HTACCESS
 .htaccess
-
-# DB
-/src/db/sqlite.db

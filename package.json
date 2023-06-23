@@ -6,11 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "npm": ">=8.0.0 <9.0.0",
-    "node": ">=16.0.0 <19.0.0"
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \\\"src/**/*.ts\\\" \\\"src/api/v1/test/**/*.ts\\\"",
     "start": "nest start",
@@ -44,11 +43,10 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "sequelize": "^6.29.3",
-    "sqlite3": "^5.1.6"
+    "sequelize": "^6.29.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",
