@@ -36,17 +36,17 @@ jobs:
         with:
           command: |
             cd ${{ secrets.REMOTE_TARGET }}
-            npm run m:migrate
+            npm run migrate:latest
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_USER }}
           pass: ${{ secrets.REMOTE_PASS }}
 
-      - name: npm start
+      - name: pm2 restart
         uses: fifsky/ssh-action@master
         with:
           command: |
             cd ${{ secrets.REMOTE_TARGET }}
-            npm run start:prod
+            pm2 restart main
           host: ${{ secrets.REMOTE_HOST }}
           user: ${{ secrets.REMOTE_USER }}
           pass: ${{ secrets.REMOTE_PASS }}
