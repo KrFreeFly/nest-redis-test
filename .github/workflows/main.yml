@@ -41,6 +41,16 @@ jobs:
           user: ${{ secrets.REMOTE_USER }}
           pass: ${{ secrets.REMOTE_PASS }}
 
+      - name: npm run build
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            npm run build
+          host: ${{ secrets.REMOTE_HOST }}
+          user: ${{ secrets.REMOTE_USER }}
+          pass: ${{ secrets.REMOTE_PASS }}
+
       - name: pm2 restart
         uses: fifsky/ssh-action@master
         with:
