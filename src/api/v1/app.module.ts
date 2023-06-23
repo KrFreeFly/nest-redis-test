@@ -23,6 +23,7 @@ import { UsersController } from './resources/users/users.controller';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: ['.env', '../.env'],
     }),
     UsersModule,
     AuthModule,
