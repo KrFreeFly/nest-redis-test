@@ -15,14 +15,19 @@ import { UsersController } from './resources/users/users.controller';
 
 @Module({
   imports: [
-    SequelizeModule.forRoot({
-      dialect: 'postgres',
-      autoLoadModels: true,
-      synchronize: true,
-    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env', '../.env'],
+    }),
+    SequelizeModule.forRoot({
+      dialect: 'postgres',
+      host: process.env.POSTGRES_HOST || 'localhost',
+      port: +process.env.POSTGRES_PORT || 5432,
+      username: process.env.POSTGRES_USERNAME,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
+      autoLoadModels: true,
+      synchronize: false,
     }),
     UsersModule,
     AuthModule,

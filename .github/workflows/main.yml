@@ -21,53 +21,27 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: git pull
-        uses: fifsky/ssh-action@master
+      - name: build
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          command: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            git pull
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          pass: ${{ secrets.REMOTE_PASS }}
-
-      - name: npm install
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            npm install
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          pass: ${{ secrets.REMOTE_PASS }}
-
-      - name: npm run migrate:latest
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            npm run migrate:latest
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          pass: ${{ secrets.REMOTE_PASS }}
-
-      - name: npm run build
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            npm run build
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          pass: ${{ secrets.REMOTE_PASS }}
-
-      - name: pm2 restart
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            pm2 restart main
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          pass: ${{ secrets.REMOTE_PASS }}
+          node-version: lts/*
+          cache: npm
+      - run: npm install
+      - run: npm run build
+      - name: deploy
+      - uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SOURCE: "dist/ node_modules/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          SCRIPT_BEFORE: |
+            whoami
+            ls -al
+            pm2 stop salsafamilia-backend
+          SCRIPT_AFTER: |
+            whoami
+            ls -al
+            pm2 start salsafamilia-backend
