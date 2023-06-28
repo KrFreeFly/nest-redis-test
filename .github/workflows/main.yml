@@ -23,14 +23,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Build app
+      - name: Install node
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
           cache: npm
-        run: |
-          npm install
-          npm run build
+      - run: npm install
+      - run: npm run build
       - name: deploy
         uses: easingthemes/ssh-deploy@main
         env:
