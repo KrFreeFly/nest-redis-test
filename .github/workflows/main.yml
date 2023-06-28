@@ -22,15 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses:
+          - actions/checkout@v3
+          - actions/setup-node@v3
         with:
           node-version: lts/*
           cache: npm
-      - run: npm install
-      - run: npm run build
+        run: |
+          npm install
+          npm run build
       - name: deploy
-      - uses: easingthemes/ssh-deploy@main
+        uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SOURCE: "dist/ node_modules/"
