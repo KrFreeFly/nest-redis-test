@@ -12,6 +12,12 @@ import { ClassesModule } from './resources/classes/classes.module';
 import { PassTypesModule } from './resources/pass-types/pass-types.module';
 import { PassesModule } from './resources/passes/passes.module';
 import { UsersController } from './resources/users/users.controller';
+import { PassesController } from './resources/passes/passes.controller';
+import { PassTypesController } from './resources/pass-types/pass-types.controller';
+import { ClassesController } from './resources/classes/classes.controller';
+import { PassesService } from './resources/passes/passes.service';
+import { PassTypesService } from './resources/pass-types/pass-types.service';
+import { ClassesService } from './resources/classes/classes.service';
 
 @Module({
   imports: [
@@ -35,7 +41,21 @@ import { UsersController } from './resources/users/users.controller';
     PassTypesModule,
     PassesModule,
   ],
-  controllers: [AppController, UsersController],
-  providers: [AppService, AuthService, UsersService, JwtService],
+  controllers: [
+    AppController,
+    UsersController,
+    PassesController,
+    PassTypesController,
+    ClassesController,
+  ],
+  providers: [
+    AppService,
+    AuthService,
+    UsersService,
+    JwtService,
+    PassesService,
+    PassTypesService,
+    ClassesService,
+  ],
 })
 export class AppModule {}
