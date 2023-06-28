@@ -41,8 +41,7 @@ jobs:
           SCRIPT_BEFORE: |
             whoami
             ls -al
-            pm2 stop salsafamilia-backend
           SCRIPT_AFTER: |
             whoami
             ls -al
-            pm2 start salsafamilia-backend
+            pm2 restart salsafamilia-backend
